@@ -5,6 +5,7 @@ import ListScreen from "./src/screens/ListScreen";
 
 const navigator = createStackNavigator(
   {
+    //all the routes defined which we can navigate to insideour application
     Home: HomeScreen,
     Components: ComponentsScreen,
     List: ListScreen
