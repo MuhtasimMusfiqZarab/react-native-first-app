@@ -6,7 +6,7 @@ import ColorCounter from "../components/ColorCounter";
 const COLOR_CHANGE = 15;
 
 //write reducer before usereducer call (outside the component for avaoiding confusion)
-//reducers always returns something
+//must return some value from the reducers (coz the return value will be provided to state)
 // reducer is called with two objects (state obj, obejct define how to change state)
 //action =>> how we change state object
 const reducer = (state, action) => {
@@ -15,11 +15,23 @@ const reducer = (state, action) => {
   //check action first to make changes
   switch (action.colorToChange) {
     case "red":
+      if (state.red + action.amount > 255 || state.red + action.amount < 0) {
+        return state;
+      }
       // returning new state without changing the preivous one
       return { ...state, red: state.red + action.amount };
     case "green":
+      if (
+        state.green + action.amount > 255 ||
+        state.green + action.amount < 0
+      ) {
+        return state;
+      }
       return { ...state, green: state.green + action.amount };
     case "blue":
+      if (state.blue + action.amount > 255 || state.blue + action.amount < 0) {
+        return state;
+      }
       return { ...state, blue: state.blue + action.amount };
     default:
       return state;
